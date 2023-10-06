@@ -6,15 +6,15 @@ use IEEE.STD_LOGIC_1164.ALL;
 -- O percurso completo deve levar 3s. Se sua matricula for par, o sentido deve ser
 -- horario. Se for impar, anti horario. Deve fazer ao menos 1 curva. 
 
-entity mioca is
+entity fumiga is
     Port ( clk : in  STD_LOGIC;
            sel : out  STD_LOGIC_VECTOR (3 downto 0);
            leds : out  STD_LOGIC_VECTOR (6 downto 0));
-end mioca;
+end fumiga;
 
 architecture Behavioral of mioca is
 	
-signal fumiga : integer range 0 to 15;
+signal posFumiga : integer range 0 to 15;
 
 begin
 
@@ -36,84 +36,84 @@ begin
 			
 				if cont = 0 
 					then
-						if fumiga > 0
-							then fumiga <= fumiga - 1;
+						if posFumiga > 0
+							then posFumiga <= fumiga - 1;
 						else
-							fumiga <= 15;
+							posFumiga <= 15;
 						end if;
 				end if; -- if do fim do contador
 			
-			if fumiga = 0
+			if posFumiga = 0
 				then  mi := "1111011";
 						ce := "1111111";
 						de := "1111111";
 						un := "1111111";
-			elsif fumiga = 1
+			elsif posFumiga = 1
 				then  mi := "1111101";
 						ce := "1111111";
 						de := "1111111";
 						un := "1111111";
-			elsif fumiga = 2
+			elsif posFumiga = 2
 				then  mi := "0111111";
 						ce := "1111111";
 						de := "1111111";
 						un := "1111111";
-			elsif fumiga = 3
+			elsif posFumiga = 3
 				then  mi := "1111111";
 						ce := "0111111";
 						de := "1111111";
 						un := "1111111";
-			elsif fumiga = 4
+			elsif posFumiga = 4
 				then  mi := "1111111";
 						ce := "1011111";
 						de := "1111111";
 						un := "1111111";
-			elsif fumiga = 5
+			elsif posFumiga = 5
 				then  mi := "1111111";
 						ce := "1101111";
 						de := "1111111";
 						un := "1111111";
-			elsif fumiga = 6
+			elsif posFumiga = 6
 				then  mi := "1111111";
 						ce := "1111111";
 						de := "1110111";
 						un := "1111111";
-			elsif fumiga = 7
+			elsif posFumiga = 7
 				then  mi := "1111111";
 						ce := "1111111";
 						de := "1101111";
 						un := "1111111";
-			elsif fumiga = 8
+			elsif posFumiga = 8
 				then  mi := "1111111";
 						ce := "1111111";
 						de := "1011111";
 						un := "1111111";
-			elsif fumiga = 9
+			elsif posFumiga = 9
 				then  mi := "1111111";
 						ce := "1111111";
 						de := "1111111";
 						un := "0111111";
-			elsif fumiga = 10
+			elsif posFumiga = 10
 				then  mi := "1111111";
 						ce := "1111111";
 						de := "1111111";
 						un := "1011111";
-			elsif fumiga = 11 
+			elsif posFumiga = 11 
 				then	mi := "1111111";
 						ce := "1111111";
 						de := "1111111";
 						un := "1101111";
-			elsif fumiga = 12
+			elsif posFumiga = 12
 				then	mi := "1111111";
 						ce := "1111111";
 						de := "1111111";
 						un := "1110111";
-			elsif fumiga = 13
+			elsif posFumiga = 13
 				then	mi := "1111111";
 						ce := "1111111";
 						de := "1110111";
 						un := "1111111";
-			elsif fumiga = 14
+			elsif posFumiga = 14
 				then	mi := "1111111";
 						ce := "1110111";
 						de := "1111111";
@@ -123,7 +123,7 @@ begin
 						ce := "1111111";
 						de := "1111111";
 						un := "1111111";	
-			end if; --pos fumiga
+			end if; --posFumiga
 			
 			
 			if mux < 1_000_000
