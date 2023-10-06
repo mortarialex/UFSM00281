@@ -12,7 +12,7 @@ entity fumiga is
            leds : out  STD_LOGIC_VECTOR (6 downto 0));
 end fumiga;
 
-architecture Behavioral of mioca is
+architecture Behavioral of fumiga is
 	
 signal posFumiga : integer range 0 to 15;
 
